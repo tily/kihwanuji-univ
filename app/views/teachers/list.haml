@@ -9,8 +9,9 @@
 - @teachers.each do |teacher|
 	%li
 		%a{href:"/teachers/#{teacher.id}"}= teacher.account.screen_name
-		(
-		= teacher.course.name
-		= t("model.course.type.#{teacher.course.type}")
-		= t("model.teacher.type.#{teacher.type}")
-		)
+		- if teacher.course
+			(
+			= teacher.course.name
+			= t("model.course.type.#{teacher.course.type}")
+			= t("model.teacher.type.#{teacher.type}")
+			)
