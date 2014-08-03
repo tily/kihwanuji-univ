@@ -1,0 +1,86 @@
+en:
+  university:
+    name: Kihnwanuji University
+    description: university that does not exists
+  copyright: Copyright &copy; 2014 Kihwanuji University. No Life Immortalized.
+  top: Top
+  about: About Us
+  news: News
+  update: Update
+  create: Create
+  edit: Edit
+  write: Write
+  teacher: Teacher
+  student: Student
+  name: Name
+  time: Time
+  type: Type
+  description: Description
+  course: Course
+  lecture: Lecture
+  paper: Paper
+  login: Login
+  logout: Logout
+  mypage: My Portal
+  participating_lectures: Participating Lectures
+  teaching_lectures: Teaching Lectures
+  as: As
+  language: Language
+  english: English
+  japanese: Japanese
+  kihwanujish: Kihwanujish
+  model:
+    account:
+      role:
+        key: Role
+        value:
+          student: Student
+          teacher: Teacher
+    teacher:
+      type:
+        temporary_lecturer: Temporary Lecturer
+        lecturer: Lecturer
+        assistant_professor: Assistant Professor
+        associate_professor: Associate Professor
+        affiliate_professor: Affiliate Professor
+        professor: Professor
+        emeritus: Emeritus
+    student:
+      type:
+        bachelor: Bachelor
+        master: Master
+        doctor: Doctor
+    course:
+      description: Description
+      type:
+        bachelor: Bachelor
+        graduate: Graduate
+    lecture:
+      title: Title
+      semester: Semester
+      credit: Credit
+      period: Period
+      day_in_week:
+        key: ','
+        value:
+          mon: Mon
+          tue: Tue
+          wed: Wed
+          thu: Thu
+          fri: Fri
+          sat: Sat
+          sun: Sun
+      course: Course
+      room: Room
+    paper:
+      title: Title
+      abstract: Abstract
+      introduction: Introduction
+      method: Method
+      theory: Theory
+      results: Results
+      discussion: Discussion
+      conclusion: Conclusion
+      acknowlegements: Acknowlegements
+      references: References
+      appendices: Appendices

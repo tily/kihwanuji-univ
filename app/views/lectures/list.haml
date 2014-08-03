@@ -1,0 +1,13 @@
+- content_for(:navigation) do
+	%ol.breadcrumb
+		%li
+			%a{href:'/'}= t('top')
+		%li
+			= t('lecture')
+%h2= t('lecture')
+- if current_account && current_account.is_teacher
+	%a{href:'/lectures/new'}= t('create')
+%ul
+- Lecture.all.each do |lecture|
+	%li
+		%a{href:"/lectures/#{lecture.id}"}= lecture.title

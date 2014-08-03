@@ -35,6 +35,7 @@ Bundler.require(:default, RACK_ENV)
 # Add your before (RE)load hooks here
 #
 Padrino.before_load do
+  Mongoid.load! File.join(Padrino.root, 'config/mongoid.yml')
 end
 
 ##
@@ -44,3 +45,6 @@ Padrino.after_load do
 end
 
 Padrino.load!
+
+#I18n.locale = :ja
+I18n.enforce_available_locales = false

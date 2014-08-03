@@ -1,0 +1,66 @@
+- content_for(:navigation) do
+	%ol.breadcrumb
+		%li
+			%a{href:'/'}= t('top')
+		%li
+			%a{href:"/accounts/#{current_account.screen_name}"}= t('mypage')
+		%li
+			編集
+%h2= current_account.screen_name
+%form.form-horizontal{role:'form',method:'POST',action:"/accounts/#{current_account.screen_name}"}
+	!= Rack::Csrf.tag(env)
+	%input{type:'hidden',name:'_method',value:'put'}
+	%div.form-group
+		%label.col-sm-2.control-label= t('model.account.role.key')
+		%div.col-sm-10
+			%div.checkbox
+				%label
+					%input{type:'checkbox',name:'is_teacher',checked:current_account.is_teacher,value:'true'}= t('teacher')
+				%label
+					%input{type:'checkbox',name:'is_student',checked:current_account.is_student,value:'true'}= t('student')
+	%div.form-group
+		%label.col-sm-2.control-label{for:'role'}= "#{t('teacher')} としての所属"
+		%div.col-sm-10
+			%div.radio
+				- Teacher::TYPE.each do |type|
+					%label
+						%input{type:'radio',name:'teacher[type]',value:type,checked:current_account.teacher.type == type}= t("model.teacher.type.#{type}")
+	%div.form-group
+		%label.col-sm-2.control-label{for:'role'}= t('model.course.type.bachelor')
+		%div.col-sm-10
+			%div.col-sm-5
+				%select.form-control{name:'teacher[course_id]'}
+					- Course.all.each do |course|
+						%option{value:course.id,selected:current_account.teacher.course == course}= "#{course.name}#{t("model.course.type.#{course.type}")}"
+	%div.form-group
+		%label.col-sm-2.control-label{for:'student'}= t('student')
+		%div.col-sm-10
+			%div.radio
+				- Student::TYPE.each do |type|
+					%label
+						%input{type:'radio',name:'student[type]',value:type,checked:current_account.student.type == type}= t("model.student.type.#{type}")
+	%div.form-group
+		%label.col-sm-2.control-label{for:'role'}= "#{t('student')} としての所属"
+		%div.col-sm-10
+			%div.col-sm-5
+				%select.form-control{name:'student[course_id]'}
+					- Course.all.each do |course|
+						%option{value:course.id,selected:current_account.student.course == course}= "#{course.name}#{t("model.course.type.#{course.type}")}"
+	%div.form-group
+		%div.col-sm-offset-2.col-sm-10
+			%button.btn.btn-default= t('update')
+:javascript
+	x = function() {
+		['teacher', 'student'].forEach(function(e) {
+			if($('input[name=is_' + e + ']').is(':checked')) {
+				$('input[name="' + e + '[type]"]').attr('disabled', null)
+				$('input[name="' + e + '[course_id]"]').removeClass('disabled')
+			} else {
+				$('input[name="' + e + '[type]"]').attr('disabled', true)
+				$('input[name="' + e + '[course_id]"]').addClass('disabled')
+			}
+		})
+	}
+	$('input[name=is_teacher]').click(x)
+	$('input[name=is_student]').click(x)
+	x()

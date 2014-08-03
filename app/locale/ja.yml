@@ -1,0 +1,87 @@
+ja:
+  university:
+    name: キハヌジ大学
+    description: 架空の大学
+  copyright: Copyright &copy; 2014 Kihwanuji University. No Life Immortalized.
+  top: トップ
+  about: 大学紹介
+  news: お知らせ
+  update: 更新
+  create: 作成
+  edit: 編集
+  write: 執筆
+  teacher: 教官
+  student: 学生
+  name: 名前
+  time: 時間
+  type: タイプ
+  description: 説明
+  course: 学部・大学院
+  lecture: シラバス
+  paper: 論文
+  login: ログイン
+  logout: ログアウト
+  mypage: マイポータル
+  participating_lectures: 参加講義
+  teaching_lectures: 講義
+  as: としての
+  language: 言語選択
+  english: 英語
+  japanese: 日本語
+  kihwanujish: キハヌジ語
+  model:
+    account:
+      role:
+        key: 役割
+        value:
+          student: 学生
+          teacher: 教官
+    teacher:
+      type:
+        temporary_lecturer: 非常勤講師
+        lecturer: 講師
+        assistant_professor: 助教授
+        associate_professor: 客員教授
+        affiliate_professor: 准教授
+        professor: 教授
+        emeritus: 名誉教授
+    student:
+      type:
+        bachelor: 学士
+        master: 修士
+        doctor: 博士
+    course:
+      description: 説明
+      type:
+        bachelor: 学部
+        graduate: 研究科
+    lecture:
+      title: タイトル
+      description: レジュメ
+      semester: 学期
+      credit: 取得単位数
+      period: 限
+      day_in_week:
+        key: 曜
+        value:
+          mon: 月
+          tue: 火
+          wed: 水
+          thu: 木
+          fri: 金
+          sat: 土
+          sun: 日
+      course: 学部・大学院
+      room: 教室
+    paper:
+      title: タイトル
+      abstract: 概要
+      introduction: 序論
+      method: 方法
+      theory: 理論
+      results: 結果
+      discussion: 考察
+      conclusion: 結論
+      acknowlegements: 謝辞
+      references: 引用文献
+      appendices: 付録

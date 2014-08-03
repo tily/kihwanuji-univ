@@ -1,0 +1,44 @@
+- content_for(:navigation) do
+	%ol.breadcrumb
+		%li
+			%a{href:'/'}= t('top')
+		%li
+			%a{href:"/courses"}= t('course')
+		- if @course
+			%li
+				%a{href:"/courses/#{@course.id}"}= "#{@course.name}#{t("model.course.type.#{@course.type}")}"
+			%li
+				= t('edit')
+		- else
+			%li
+				= t('create')
+%h2= "#{t('course')}#{@course ? t('edit') : t('create')}"
+- if @course && !@course.errors.empty?
+	.alert.alert-danger
+		%ul
+			- @course.errors.each do |field, message|
+				%li= "#{field} #{message}"
+%form.form-horizontal{role:'form',method:'POST',action:@course ? "/courses/#{@course.id}" : "/courses"}
+	- if @course
+		%input{type:'hidden',name:'_method',value:'put'}
+	!= Rack::Csrf.tag(env)
+	%div.form-group
+		%label.col-sm-2.control-label{for:'role'}= t('name')
+		%div.col-sm-10
+			%input.form-control{type:'text',name:'name',value:@course.try(:name)}
+	%div.form-group
+		%label.col-sm-2.control-label{for:'role'}= t('model.course.description')
+		%div.col-sm-10
+			%textarea.form-control{name:'description'}
+				= @course.try(:description)
+	- if @course.nil?
+		%div.form-group
+			%label.col-sm-2.control-label{for:'role'}= t('type')
+			%div.col-sm-10
+				%div.radio
+					- Course::TYPE.each do |type|
+						%label
+							%input{type:'radio',name:'type',value:type}= t("model.course.type.#{type}")
+	%div.form-group
+		%div.col-sm-offset-2.col-sm-10
+			%button.btn.btn-default 作成

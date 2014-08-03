@@ -1,0 +1,52 @@
+- content_for(:navigation) do
+	%ol.breadcrumb
+		%li
+			%a{href:'/'}= t('top')
+		%li
+			%a{href:"/lectures"}= t('lecture')
+		- if @lecture
+			%li
+				%a{href:"/lectures/#{@lecture.id}"}= @lecture.title
+			%li
+				= t('edit')
+		- else
+			%li
+				= t('create')
+%h2= "#{t('lecture')}#{t('create')}"
+%form.form-horizontal{role:'form',method:'POST',action:@lecture ? "/lectures/#{@lecture.id}": "/lectures"}
+	- if @lecture
+		%input{type:'hidden',name:'_method',value:'put'}
+	!= Rack::Csrf.tag(env)
+	%div.form-group
+		%label.col-sm-2.control-label{for:'role'}= t('model.lecture.title')
+		%div.col-sm-10
+			%input.form-control{type:'text',name:'title',value:@lecture.try(:title)}
+	%div.form-group
+		%label.col-sm-2.control-label{for:'role'}= t('model.lecture.description')
+		%div.col-sm-10
+			%textarea.form-control{name:'description'}
+				= @lecture.try('description')
+	%div.form-group
+		%label.col-sm-2.control-label{for:'role'}= t('model.lecture.course')
+		%div.col-sm-10
+			%select.form-control{name:'course_id'}
+				- Course.where(type: 'graduate').each do |course|
+					%option{value:course.id}= course.name
+	%div.form-group
+		%label.col-sm-2.control-label{for:'role'}= t('time')
+		%div.col-sm-10
+			%select.form-control{name:'day_in_week'}
+				- Lecture::DAY_IN_WEEK.each do |day_in_week|
+					%option{value:day_in_week}= t("model.lecture.day_in_week.value.#{day_in_week}")
+			%span= t('model.lecture.day_in_week.key')
+			%select.form-control{name:'period'}
+				- Lecture::PERIOD.each do |period|
+					%option{value:period}= period
+			%span= t('model.lecture.period')
+	%div.form-group
+		%label.col-sm-2.control-label{for:'role'}= t('model.lecture.room')
+		%div.col-sm-10
+			%input.form-control{type:'text',name:'room',value:@lecture.try('room')}
+	%div.form-group
+		%div.col-sm-offset-2.col-sm-10
+			%button= @lecture ? t('update') : t('create')

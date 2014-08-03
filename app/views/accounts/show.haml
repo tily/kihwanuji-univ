@@ -1,0 +1,45 @@
+- content_for(:navigation) do
+	%ol.breadcrumb
+		%li
+			%a{href:'/'}= t('top')
+		%li
+			= t('mypage')
+%h2= @account.screen_name
+- if @account == current_account
+	%div
+		%a{href:"/accounts/#{current_account.screen_name}/edit"}編集
+%div.row
+	- if @account.is_student
+		%div.col-md-6
+			%h2= "#{t('student')}#{t('as')} #{current_account.screen_name}"
+			%p
+				= @account.student.course.name
+				= t("model.course.type.#{@account.student.course.type}")
+				= t("model.student.type.#{@account.student.type}")
+			%h3= t('participating_lectures')
+			%ul
+			- @account.student.lectures.each do |lecture|
+				%li
+					%a{href:"/lectures/#{lecture.id}"}= lecture.title
+			%h3= t('paper')
+			%ul
+			- @account.student.papers.each do |paper|
+				%li
+					%a{href:"/papers/#{paper.id}"}= paper.title
+	- if @account.is_teacher
+		%div.col-md-6
+			%h2= "#{t('teacher')}#{t('as')} #{@account.screen_name}"
+			%p
+				= @account.teacher.course.name
+				= t("model.course.type.#{@account.teacher.course.type}")
+				= t("model.teacher.type.#{@account.teacher.type}")
+			%h3= t('teaching_lectures')
+			%ul
+			- @account.teacher.lectures.each do |lecture|
+				%li
+					%a{href:"/lectures/#{lecture.id}"}= lecture.title
+			%h3= t('paper')
+			%ul
+			- @account.teacher.papers.each do |paper|
+				%li
+					%a{href:"/papers/#{paper.id}"}= paper.title

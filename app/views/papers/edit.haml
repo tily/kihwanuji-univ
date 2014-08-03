@@ -1,0 +1,46 @@
+- content_for(:navigation) do
+	%ol.breadcrumb
+		%li
+			%a{href:'/'}= t('top')
+		%li
+			%a{href:"/papers"}= t('paper')
+		- if @paper
+			%li
+				%a{href:"/papers/#{@paper.id}"}= @paper.title
+			%li
+				= t('edit')
+		- else
+			%li
+				= t('write')
+%h2= "#{t('paper')}#{@paper ? t('edit') : t('write')}"
+%form.form-horizontal{role:'form',method:'POST',action:@paper ? "/papers/#{@paper.id}" : "/papers"}
+	- if @paper
+		%input{type:'hidden',name:'_method',value:'put'}
+	!= Rack::Csrf.tag(env)
+	%div.form-group
+		%label.col-sm-2.control-label{for:'role'}= t('model.paper.title')
+		%div.col-sm-10
+			%input.form-control{type:'text',name:'title',value:@paper.try(:title)}
+	- if !@paper
+		%div.form-group
+			%label.col-sm-2.control-label{for:'role'}= t('model.account.role.key')
+			%div.col-sm-10
+				%div.radio
+					- %w(teacher student).each do |role|
+						%label
+							%input{type:'radio',name:'role',value:role}= t("model.account.role.value.#{role}")
+		%div.form-group
+			%label.col-sm-2.control-label{for:'role'}= t('model.lecture.course')
+			%div.col-sm-10
+				%select.form-control{name:'course_id'}
+					- Course.all.each do |course|
+						%option{value:course.id}= course.name
+	- %w(abstract introduction method theory results discussion conclusion acknowlegements references appendices).each do |section|
+		%div.form-group
+			%label.col-sm-2.control-label{for:'role'}= t("model.paper.#{section}")
+			%div.col-sm-10
+				%textarea.form-control{name:section}
+					= @paper.try(section)
+	%div.form-group
+		%div.col-sm-offset-2.col-sm-10
+			%button.btn.btn-default= @paper ? t('update') : t('create')

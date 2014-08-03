@@ -1,0 +1,25 @@
+- content_for(:navigation) do
+	%ol.breadcrumb
+		%li
+			%a{href:'/'}= t('top')
+		%li
+			%a{href:"/papers"}= t('paper')
+		%li
+			= @paper.title
+%h2= @paper.title
+%p
+	= t('university.name')
+	- if @paper.teacher
+		= "#{t("model.course.type.#{@paper.teacher.course.type}")}"
+		= "#{t("model.teacher.type.#{@paper.teacher.type}")}"
+		= @paper.teacher.account.screen_name
+	- else
+		= "#{t("model.course.type.#{@paper.student.course.type}")}"
+		= "#{t("model.student.type.#{@paper.student.type}")}"
+		= @paper.student.account.screen_name
+- if current_account && (@paper.student == current_account.student || @paper.teacher == current_account.teacher)
+	%a{href:"/papers/#{@paper.id}/edit"}= t('edit')
+- %w(abstract introduction method theory results discussion conclusion acknowlegements references appendices).each do |section|
+	- if @paper.try(section) && @paper.try(section) != ""
+		%h3= t("model.paper.#{section}")
+		!= Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(filter_html:true)).render @paper.try(section)

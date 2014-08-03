@@ -1,0 +1,13 @@
+- content_for(:navigation) do
+	%ol.breadcrumb
+		%li
+			%a{href:'/'}= t('top')
+		%li
+			= t('paper')
+%h2= t('paper')
+- if current_account
+	%a{href:'/papers/new'}= t('write')
+%ul
+- Paper.all.each do |paper|
+	%li
+		%a{href:"/papers/#{paper.id}"}= paper.title

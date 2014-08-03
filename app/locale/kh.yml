@@ -1,0 +1,86 @@
+kh:
+  university:
+    name: キハヌジ ゴミ
+    description: ゴミ ゴミ
+  copyright: Copyright &copy; 2014 Kihwanuji University. No Life Immortalized.
+  top: オグモ
+  about: オグモ
+  news: オグモ
+  update: メドル
+  create: メドル
+  edit: メドル
+  write: メドル
+  teacher: ルルタイ
+  student: モコ
+  name: オグモ
+  time: カリムナッシャル
+  type: タイプ
+  description: オグモ
+  course: ホゼ
+  lecture: チャ
+  paper: ゴミ
+  login: オグモ
+  logout: チ
+  mypage: マイポータル
+  participating_lectures: スチョン チャ
+  teaching_lectures: チャ
+  as: ビン
+  language: ム
+  english: イングリム
+  japanese: ジャパム
+  kihwanujish: キハヌム
+  model:
+    account:
+      role:
+        key: ミル
+        value:
+          student: モコ
+          teacher: ルルタイ
+    teacher:
+      type:
+        temporary_lecturer: ルルタイ オサム
+        lecturer: ルルタイ
+        assistant_professor: ルルタイ ミルコ
+        associate_professor: ルルタイ モリクリ
+        affiliate_professor: ルルタイ ゲボ
+        professor: ルル
+        emeritus: ルル カミナリ
+    student:
+      type:
+        bachelor: モコ
+        master: マルミチ
+        doctor: シャルトーハ
+    course:
+      description: オグモ
+      type:
+        bachelor: カミナリ
+        graduate: オンデュ
+    lecture:
+      title: タイトル
+      semester: カリムナッシャルハ
+      credit: カミナリ
+      period: ハー
+      day_in_week:
+        key: クマル
+        value:
+          mon: ミギ
+          tue: ラン
+          wed: ルン
+          thu: ラムステ
+          fri: オムステ
+          sat: カータ
+          sun: ピリ
+      course: ホゼ
+      room: マーボ
+    paper:
+      title: オグモ
+      abstract: オグモ
+      introduction: オグモ
+      method: オンデュ
+      theory: シケ
+      results: ガンズルグ
+      discussion: オサム
+      conclusion: チ
+      acknowlegements: ザボン
+      references: オグモ
+      appendices: オグモ

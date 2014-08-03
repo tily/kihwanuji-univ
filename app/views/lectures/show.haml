@@ -1,0 +1,46 @@
+- content_for(:navigation) do
+	%ol.breadcrumb
+		%li
+			%a{href:'/'}= t('top')
+		%li
+			%a{href:"/lectures"}= t('lecture')
+		%li
+			= @lecture.title
+%h2= @lecture.title
+- if current_account && @lecture.teacher == current_account.teacher
+	%a{href:"/lectures/#{@lecture.id}/edit"}= t('edit')
+
+%table.table
+	%tr
+		%td= t('teacher')
+		%td
+			%a{href:"/teachers/#{@lecture.teacher.id}"}= @lecture.teacher.account.screen_name
+	%tr
+		%td= t('time')
+		%td
+			= t("model.lecture.day_in_week.value.#{@lecture.day_in_week}")
+			= t('model.lecture.day_in_week.key')
+			= @lecture.period
+			= t("model.lecture.period")
+	%tr
+		%td= t('model.lecture.room')
+		%td
+			%p= @lecture.room
+	%tr
+		%td= t('model.lecture.description')
+		%td
+			%p= @lecture.description
+
+%h3 受講者一覧
+%form{method:'POST',action:"/lectures/#{@lecture.id}/subscription"}
+	!= Rack::Csrf.tag(env)
+	- if current_account && @lecture.teacher != current_account.teacher
+		- if @lecture.students.include?(current_account.student)
+			%input{type:'hidden',name:'_method',value:'delete'} 
+			%button.btn.btn-default 受講停止
+		- else
+			%button.btn.btn-default 受講
+%ul
+- @lecture.students.each do |student|
+	%li
+		%a{href:"/students/#{student.id}"}= student.account.screen_name

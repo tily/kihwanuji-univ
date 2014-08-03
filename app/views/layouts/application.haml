@@ -1,0 +1,68 @@
+!!! 5
+%html
+	%head
+		%title
+			- if request.path == '/'
+				= t('university.name')
+			- else
+				= Nokogiri::HTML(yield_content(:navigation)).text.gsub(/\s+#{t('top')}/, t('university.name')).split(/\s+/).compact.join(' / ')
+		%script{src:"http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js",type:"text/javascript"}
+		%script{src:"http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js",type:"text/javascript"}
+		%link{rel:'stylesheet',href:'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'}
+	%body
+		%div.container
+			%div{style:'padding-top:10px;padding-bottom:10px'}
+				%h1
+					= t('university.name')
+					%small= t('university.description')
+			%div{style:'padding-bottom:10px'}
+				%ul.nav.nav-pills{style:'float:right;'}
+					- if current_account
+						%li
+							%a{href:"/accounts/#{current_account.screen_name}"}= t('mypage')
+						%li
+							%a{href:'/logout'}= t('logout')
+					- else
+						%li
+							%a{href:'/auth/twitter'}= t('login')
+					%li
+						%span.dropdown
+							%button.btn.btn-default.dropdown-toggle{:type=>"button",:id=>"language",:'data-toggle'=>"dropdown"}
+								= t('language')
+								%span.caret
+							%ul.dropdown-menu{:role=>"menu",:'aria-labelledby'=>"language"}
+								%li{role:"presentation"}
+									%a.lang{:id=>'en',:role=>"menuitem",:'tabindex'=>"-1",:href=>"#"}= t('english')
+								%li{role:"presentation"}
+									%a.lang{:id=>'kh',:role=>"menuitem",:'tabindex'=>"-1",:href=>"#"}= t('kihwanujish')
+								%li{role:"presentation"}
+									%a.lang{:id=>'ja',:role=>"menuitem",:'tabindex'=>"-1",:href=>"#"}= t('japanese')
+				%ul.nav.nav-pills
+					%li
+						%a{href:'/'}= t('top')
+					%li
+						%a{href:'/about'}= t('about')
+					%li
+						%a{href:'/students'}= t('student')
+					%li
+						%a{href:'/teachers'}= t('teacher')
+					%li
+						%a{href:'/courses'}= t('course')
+					%li
+						%a{href:'/lectures'}= t('lecture')
+					%li
+						%a{href:'/papers'}= t('paper')
+			!= yield_content(:navigation)
+			!= yield
+			%hr
+			%div{style:'float:right;padding-bottom:15px'}
+				!= t('copyright')
+:javascript
+	$('.lang').click(function() {
+		$.get(
+			'/accounts/language',
+			{lang: $(this).attr('id')}
+		).done(function() {
+			window.location.reload()
+		})
+	})

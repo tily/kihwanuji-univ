@@ -4,6 +4,21 @@ module KihwanujiUniv
     register Padrino::Helpers
 
     enable :sessions
+    set :haml, ugly: true
+
+    use OmniAuth::Builder do
+      provider :twitter,  'Xzk9BBcpCR5RuFmiAcqluiqGN', 'wtwxgDEOg2ONQGIwOvgHbBscDPsd5pcKWINxdLB2EgpadU5rDU'
+    end
+
+    use Rack::Csrf, :raise => true
+    set :protection, false
+    set :protect_from_csrf, false
+    set :allow_disabled_csrf, true
+
+    before do
+      I18n.locale = session[:lang] || 'ja'
+      logger.info params
+    end
 
     ##
     # Caching support.
