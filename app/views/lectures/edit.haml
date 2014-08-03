@@ -30,7 +30,7 @@
 		%label.col-sm-2.control-label{for:'role'}= t('model.lecture.course')
 		%div.col-sm-10
 			%select.form-control{name:'course_id'}
-				- Course.where(type: 'graduate').each do |course|
+				- Course.all.each do |course|
 					%option{value:course.id}= course.name
 	%div.form-group
 		%label.col-sm-2.control-label{for:'role'}= t('time')
