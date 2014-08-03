@@ -23,7 +23,7 @@
 					%li
 						%a{href:"/students/#{student.id}"}= student.account.screen_name
 						(
-						= student.course.name
+						= student.try(:course).try(:name)
 						= t("model.course.type.#{student.course.type}")
 						= t("model.student.type.#{student.type}")
 						)
@@ -34,7 +34,7 @@
 					%li
 						%a{href:"/teachers/#{teacher.id}"}= teacher.account.screen_name
 						(
-						= teacher.course.name
+						= teacher.try(:course).try(:name)
 						= t("model.course.type.#{teacher.course.type}")
 						= t("model.teacher.type.#{teacher.type}")
 						)
