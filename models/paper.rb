@@ -17,17 +17,17 @@ class Paper
   validates :title, length: {maximum: 35}
   validates :abstract, length: {maximum: 140}
   [
-    :introduction
-    :method
-    :theory
-    :results
-    :discussion
-    :conclusion
-    :acknowlegements
-    :references
+    :introduction,
+    :method,
+    :theory,
+    :results,
+    :discussion,
+    :conclusion,
+    :acknowlegements,
+    :references,
     :appendices
   ].each do |x|
-    validates :title, length: {maximum: 1000}
+    validates x, length: {maximum: 1000}
   end
 
   belongs_to :student
