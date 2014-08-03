@@ -16,10 +16,8 @@ class Account
       account.provider = auth["provider"]
       account.uid = auth["uid"]
       account.screen_name = auth["info"]["nickname"]
-      account.is_student = false
-      account.is_teacher = false
-      account.student = Student.create!(type: Student::TYPE.sample)
-      account.teacher = Teacher.create!(type: Teacher::TYPE.sample)
+      account.student = Student.create!(type: Student::TYPE.sample, enabled: false)
+      account.teacher = Teacher.create!(type: Teacher::TYPE.sample, enabled: false)
     end
   end
 end

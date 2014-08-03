@@ -16,6 +16,7 @@ module KihwanujiUniv
     set :allow_disabled_csrf, true
 
     before do
+      p params
       I18n.locale = session[:lang] || 'ja'
       logger.info params
     end

@@ -14,6 +14,7 @@ class Teacher
 
   field :type, type: String
   field :url, type: String
+  field :enabled, type: Boolean
 
   validates :type, inclusion: {in: TYPE}
 

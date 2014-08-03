@@ -15,9 +15,9 @@
 		%div.col-sm-10
 			%div.checkbox
 				%label
-					%input{type:'checkbox',name:'is_teacher',checked:current_account.is_teacher,value:'true'}= t('teacher')
+					%input{type:'checkbox',name:'teacher[enabled]',checked:current_account.teacher.enabled,value:'true'}= t('teacher')
 				%label
-					%input{type:'checkbox',name:'is_student',checked:current_account.is_student,value:'true'}= t('student')
+					%input{type:'checkbox',name:'student[enabled]',checked:current_account.student.enabled,value:'true'}= t('student')
 	%div.form-group
 		%label.col-sm-2.control-label{for:'role'}= "#{t('teacher')} としての所属"
 		%div.col-sm-10
@@ -52,7 +52,8 @@
 :javascript
 	x = function() {
 		['teacher', 'student'].forEach(function(e) {
-			if($('input[name=is_' + e + ']').is(':checked')) {
+			console.log('input[name="' + e + '[enabled]"]')
+			if($('input[name="' + e + '[enabled]"]').is(':checked')) {
 				$('input[name="' + e + '[type]"]').attr('disabled', null)
 				$('input[name="' + e + '[course_id]"]').removeClass('disabled')
 			} else {
@@ -61,6 +62,6 @@
 			}
 		})
 	}
-	$('input[name=is_teacher]').click(x)
-	$('input[name=is_student]').click(x)
+	$('input[name="teacher[enabled]"]').click(x)
+	$('input[name="student[enabled]"]').click(x)
 	x()

@@ -5,6 +5,7 @@ class Student
   TYPE = %w(bachelor master doctor)
 
   field :type, type: String
+  field :enabled, type: Boolean
 
   validates :type, allow_nil: true, inclusion: {in: TYPE}
 

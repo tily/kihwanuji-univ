@@ -15,29 +15,22 @@ KihwanujiUniv::App.controllers :accounts do
   end
 
   put '/:screen_name' do
-    current_account.is_student = params[:is_student]
-    current_account.is_teacher = params[:is_teacher]
-    current_account.save!
-    if current_account.is_student
-      student = current_account.student
-      if params[:student][:type]
-        student.type = params[:student][:type]
-      end
-      if params[:student][:course_id] && course = Course.find(params[:student][:course_id])
-        student.course = course
-      end
-      student.save!
+    student = current_account.student
+    student.type = params[:student][:type] if params[:student][:type]
+    student.enabled = (params[:student][:enabled] && params[:student][:enabled] == 'true')
+    if params[:student][:course_id] && course = Course.find(params[:student][:course_id])
+      student.course = course
     end
-    if current_account.is_teacher
-      teacher = current_account.teacher
-      if params[:teacher][:type]
-        teacher.type = params[:teacher][:type]
-      end
-      if params[:teacher][:course_id] && course = Course.find(params[:teacher][:course_id])
-        teacher.course = course
-      end
-      teacher.save!
+    student.save!
+
+    teacher = current_account.teacher
+    teacher.type = params[:teacher][:type] if params[:teacher][:type]
+    teacher.enabled = (params[:teacher][:enabled] && params[:teacher][:enabled] == 'true')
+    if params[:teacher][:course_id] && course = Course.find(params[:teacher][:course_id])
+      teacher.course = course
     end
+    teacher.save!
+
     redirect url("/accounts/#{current_account.screen_name}")
   end
 end

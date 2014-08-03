@@ -9,7 +9,7 @@
 	%div
 		%a{href:"/accounts/#{current_account.screen_name}/edit"}編集
 %div.row
-	- if @account.is_student
+	- if @account.student.enabled
 		%div.col-md-6
 			%h2= "#{t('student')}#{t('as')} #{current_account.screen_name}"
 			%p
@@ -26,7 +26,7 @@
 			- @account.student.papers.each do |paper|
 				%li
 					%a{href:"/papers/#{paper.id}"}= paper.title
-	- if @account.is_teacher
+	- if @account.teacher.enabled
 		%div.col-md-6
 			%h2= "#{t('teacher')}#{t('as')} #{@account.screen_name}"
 			%p
