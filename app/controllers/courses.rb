@@ -23,7 +23,7 @@ KihwanujiUniv::App.controllers :courses do
     @course.type = params[:type]
     @course.description = params[:description]
     if @course.save
-   	 redirect url("/courses/#{course.id}")
+   	 redirect url("/courses/#{@course.id}")
     else
     	render :'courses/edit'
     end
