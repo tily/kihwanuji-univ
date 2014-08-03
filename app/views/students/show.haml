@@ -7,10 +7,11 @@
 		%li
 			= @student.account.screen_name
 %h2= @student.account.screen_name
-%p
-	= @student.course.name
-	= t("model.course.type.#{@student.course.type}")
-	= t("model.student.type.#{@student.type}")
+- if @student.course
+	%p
+		= @student.course.name
+		= t("model.course.type.#{@student.course.type}")
+		= t("model.student.type.#{@student.type}")
 %div.row
 	%div.col-md-6
 		%h3= t('participating_lectures')

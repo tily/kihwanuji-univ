@@ -9,8 +9,9 @@
 - @students.each do |student|
 	%li
 		%a{href:"/students/#{student.id}"}= student.account.screen_name
-		(
-		= student.course.name
-		= t("model.course.type.#{student.course.type}")
-		= t("model.student.type.#{student.type}")
-		)
+		- if student.course
+			(
+			= student.course.name
+			= t("model.course.type.#{student.course.type}")
+			= t("model.student.type.#{student.type}")
+			)
