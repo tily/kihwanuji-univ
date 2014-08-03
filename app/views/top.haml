@@ -22,22 +22,24 @@
 				- Student.limit(10).each do |student|
 					%li
 						%a{href:"/students/#{student.id}"}= student.account.screen_name
-						(
-						= student.try(:course).try(:name)
-						= t("model.course.type.#{student.course.type}")
-						= t("model.student.type.#{student.type}")
-						)
+						- if student.course
+							(
+							= student.try(:course).try(:name)
+							= t("model.course.type.#{student.course.type}")
+							= t("model.student.type.#{student.type}")
+							)
 		%div.col-md-6
 			%h2= t('teacher')
 			%ul
 				- Teacher.limit(10).each do |teacher|
 					%li
 						%a{href:"/teachers/#{teacher.id}"}= teacher.account.screen_name
-						(
-						= teacher.try(:course).try(:name)
-						= t("model.course.type.#{teacher.course.type}")
-						= t("model.teacher.type.#{teacher.type}")
-						)
+						-if teacher.course
+							(
+							= teacher.try(:course).try(:name)
+							= t("model.course.type.#{teacher.course.type}")
+							= t("model.teacher.type.#{teacher.type}")
+							)
 	%div.row
 		%div.col-md-6
 			%h2= t('model.course.type.bachelor')
