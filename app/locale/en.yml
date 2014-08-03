@@ -57,6 +57,7 @@ en:
         graduate: Graduate
     lecture:
       title: Title
+      description: Description
       semester: Semester
       credit: Credit
       period: Period
