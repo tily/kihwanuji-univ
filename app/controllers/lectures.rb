@@ -14,6 +14,7 @@ KihwanujiUniv::App.controllers :lectures do
   end
 
   get '/' do
+    @lectures = Lecture.desc(:created_at)
     render :'lectures/list'
   end
 

@@ -8,6 +8,6 @@
 - if current_account
 	%a{href:'/papers/new'}= t('write')
 %ul
-- Paper.all.each do |paper|
+- @papers.each do |paper|
 	%li
 		%a{href:"/papers/#{paper.id}"}= paper.title

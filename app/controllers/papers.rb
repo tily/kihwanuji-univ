@@ -14,6 +14,7 @@ KihwanujiUniv::App.controllers :papers do
   end
 
   get '/' do
+    @papers = Paper.desc(:created_at)
     render :'papers/list'
   end
 

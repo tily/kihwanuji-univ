@@ -1,5 +1,11 @@
 KihwanujiUniv::App.controllers do
   get '/' do
+    @students = Student.desc(:created_at).limit(10)
+    @teachers = Teacher.desc(:created_at).limit(10)
+    @bachelor_courses = Course.where(type: 'bachelor').desc(:created_at).limit(10)
+    @graduate_courses = Course.where(type: 'graduate').desc(:created_at).limit(10)
+    @lectures = Lecture.desc(:created_at).limit(10)
+    @papers = Paper.desc(:created_at).limit(10)
     render :top
   end
 

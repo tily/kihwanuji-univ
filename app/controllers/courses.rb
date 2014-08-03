@@ -1,5 +1,6 @@
 KihwanujiUniv::App.controllers :courses do
   get '/new' do
+    @courses = Course.desc(:created_at)
     render :'courses/edit'
   end
 
@@ -14,6 +15,7 @@ KihwanujiUniv::App.controllers :courses do
   end
 
   get '/' do
+    @courses = Course.desc(:created_at)
     render :'courses/list'
   end
 

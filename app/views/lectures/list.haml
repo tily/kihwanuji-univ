@@ -8,6 +8,6 @@
 - if current_account && current_account.is_teacher
 	%a{href:'/lectures/new'}= t('create')
 %ul
-- Lecture.all.each do |lecture|
+- @lectures.each do |lecture|
 	%li
 		%a{href:"/lectures/#{lecture.id}"}= lecture.title
