@@ -14,4 +14,4 @@
 			%ul
 				- @courses.where(type: type).each do |course|
 					%li
-						%a{href:"/courses/#{course.id}"}= "#{course.name}#{t("model.course.type.#{type}")}"
+						%a{href:"/courses/#{course.id}"}= "#{course.name} #{t("model.course.type.#{type}")}"

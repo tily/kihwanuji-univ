@@ -47,14 +47,14 @@
 				- @bachelor_courses.each do |course|
 					%li
 						%a{href:"/courses/#{course.id}"}
-							= "#{course.name}#{t("model.course.type.#{course.type}")}"
+							= "#{course.name} #{t("model.course.type.#{course.type}")}"
 		%div.col-md-6
 			%h2= t('model.course.type.graduate')
 			%ul
 				- @graduate_courses.each do |course|
 					%li
 						%a{href:"/courses/#{course.id}"}
-							= "#{course.name}#{t("model.course.type.#{course.type}")}"
+							= "#{course.name} #{t("model.course.type.#{course.type}")}"
 	%div.row
 		%div.col-md-6
 			%h2= t('lecture')
