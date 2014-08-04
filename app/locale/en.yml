@@ -10,15 +10,15 @@ en:
   create: Create
   edit: Edit
   write: Write
-  teacher: Teacher
-  student: Student
+  teacher: Teachers
+  student: Students
   name: Name
   time: Time
   type: Type
   description: Description
-  course: Course
-  lecture: Lecture
-  paper: Paper
+  course: Courses
+  lecture: Lectures
+  paper: Papers
   login: Login
   logout: Logout
   mypage: My Portal
