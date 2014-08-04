@@ -5,7 +5,7 @@ KihwanujiUniv::App.controllers :teachers do
   end
 
   get '/' do
-    @teachers = Teacher.desc(:created_at).where(enabled: true)
+    @teachers = Teacher.enabled.desc(:created_at)
     render :'teachers/list'
   end
 end

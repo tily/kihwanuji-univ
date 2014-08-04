@@ -41,6 +41,6 @@
 		- else
 			%button.btn.btn-default 受講
 %ul
-- @lecture.students.each do |student|
+- @lecture.students.enabled.each do |student|
 	%li
 		%a{href:"/students/#{student.id}"}= student.account.screen_name

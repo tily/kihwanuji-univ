@@ -14,4 +14,6 @@ class Student
   has_many :papers
   belongs_to :course
   belongs_to :teacher
+
+  scope :enabled, ->{ where(enabled: true) }
 end

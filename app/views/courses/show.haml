@@ -13,12 +13,12 @@
 	%div.col-md-6
 		%h3 教官
 		%ul
-		- @course.teachers.each do |teacher|
+		- @course.teachers.enabled.each do |teacher|
 			%li
 				%a{href:"/teachers/#{teacher.id}"}= teacher.account.screen_name
 	%div.col-md-6
 		%h3 学生
 		%ul
-		- @course.students.each do |student|
+		- @course.students.enabled.each do |student|
 			%li
 				%a{href:"/students/#{student.id}"}= student.account.screen_name
