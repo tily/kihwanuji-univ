@@ -53,8 +53,8 @@ en:
     course:
       description: Description
       type:
-        bachelor: Bachelor
-        graduate: Graduate
+        bachelor: Bachelor Courses
+        graduate: Graduate Courses
     lecture:
       title: Title
       description: Description
