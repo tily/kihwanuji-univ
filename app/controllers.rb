@@ -23,6 +23,6 @@ KihwanujiUniv::App.controllers do
     account = Account.where(:provider => auth["provider"], :uid => auth["uid"]).first || 
               Account.create_with_omniauth(auth)
     session[:uid] = auth["uid"]
-    redirect "http://" + request.env["HTTP_HOST"] + "/accounts/#{account.screen_name}"
+    redirect url("/accounts/#{account.screen_name}")
   end
 end
