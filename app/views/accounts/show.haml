@@ -11,7 +11,7 @@
 %div.row
 	- if @account.student.enabled
 		%div.col-md-6
-			%h2= "#{t('student')}#{t('as')} #{current_account.screen_name}"
+			%h2= "#{t('student')} #{t('as')} #{current_account.screen_name}"
 			%p
 				= @account.student.course.name
 				= t("model.course.type.#{@account.student.course.type}")
@@ -28,7 +28,7 @@
 					%a{href:"/papers/#{paper.id}"}= paper.title
 	- if @account.teacher.enabled
 		%div.col-md-6
-			%h2= "#{t('teacher')}#{t('as')} #{@account.screen_name}"
+			%h2= "#{t('teacher')} #{t('as')} #{@account.screen_name}"
 			%p
 				= @account.teacher.course.name
 				= t("model.course.type.#{@account.teacher.course.type}")
