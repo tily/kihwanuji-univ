@@ -22,7 +22,7 @@ class Lecture
   validate :period, presence: true
 
   validates :title, length: {maximum: 35}
-  validates :description, length: {maximum: 140}
+  validates :description, length: {maximum: 140*5}
 
   validate :day_in_week, inclusion: {in: DAY_IN_WEEK}
   validate :period, inclusion: {in: PERIOD}
