@@ -49,4 +49,4 @@
 			%input.form-control{type:'text',name:'room',value:@lecture.try('room')}
 	%div.form-group
 		%div.col-sm-offset-2.col-sm-10
-			%button= @lecture ? t('update') : t('create')
+			%button.btn.btn-default= @lecture ? t('update') : t('create')
