@@ -22,5 +22,4 @@
 - %w(abstract introduction method theory results discussion conclusion acknowlegements references appendices).each do |section|
 	- if @paper.try(section) && @paper.try(section) != ""
 		%h3= t("model.paper.#{section}")
-		- markdown = @paper.send(section).gsub(/。/){'．'}.gsub(/、/){'，'}
-		!= Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(filter_html:true)).render(markdown)
+		!= markdown2html academic @paper.send(section)

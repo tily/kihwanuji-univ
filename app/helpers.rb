@@ -11,4 +11,13 @@ KihwanujiUniv::App.helpers do
   def timetable(lectures)
     haml(:"fragments/timetable", layout: false, locals: {lectures: lectures})
   end
+
+  def academic(str)
+    str.gsub(/。/) {'．'}.gsub(/、/) {'，'}
+  end
+
+  def markdown2html(markdown)
+    renderer = Redcarpet::Render::HTML.new(filter_html:true)
+    Redcarpet::Markdown.new(renderer).render(markdown)
+  end
 end

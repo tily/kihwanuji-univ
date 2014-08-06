@@ -27,8 +27,7 @@
 		%td= @lecture.room
 	%tr
 		%td= t('model.lecture.description')
-		%td
-			%p= @lecture.description
+		%td!= markdown2html academic @lecture.description
 
 %h3 受講者一覧
 %form{method:'POST',action:"/lectures/#{@lecture.id}/subscription"}
