@@ -13,8 +13,8 @@
 					)
 				- Lecture::DAY_IN_WEEK.each do |day_in_week|
 					%td
-						- lectures = lectures.to_a.select {|lecture| lecture.period == period && lecture.day_in_week == day_in_week }
-						- if !lectures.empty?
+						- _lectures = lectures.to_a.select {|lecture| lecture.period == period && lecture.day_in_week == day_in_week }
+						- if !_lectures.empty?
 							%ul
-							- lectures.each do |lecture|
+							- _lectures.each do |lecture|
 								%li= list_item(:lecture, lecture)
