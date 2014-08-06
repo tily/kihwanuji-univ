@@ -1,0 +1,20 @@
+%div.table-responsive
+	%table.table.table-bordered
+		%tr
+			%td
+			- Lecture::DAY_IN_WEEK.each do |day_in_week|
+				%td= [t("model.lecture.day_in_week.value.#{day_in_week}"), t('model.lecture.day_in_week.key')].join
+		- Lecture::PERIOD.each do |period|
+			%tr
+				%td
+					= "#{period} #{t('model.lecture.period')}"
+					(
+					= Lecture::PERIOD_TO_TIME[period]
+					)
+				- Lecture::DAY_IN_WEEK.each do |day_in_week|
+					%td
+						- lectures = lectures.to_a.select {|lecture| lecture.period == period && lecture.day_in_week == day_in_week }
+						- if !lectures.empty?
+							%ul
+							- lectures.each do |lecture|
+								%li= list_item(:lecture, lecture)

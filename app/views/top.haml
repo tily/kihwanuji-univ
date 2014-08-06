@@ -63,10 +63,9 @@
 					%li
 						%a{href:"/lectures/#{lecture.id}"}
 							= lecture.title
+			%a{href:'/lectures/timetable'}= t('timetable')
 		%div.col-md-6
 			%h2= t('paper')
 			%ul
 				- @papers.each do |paper|
-					%li
-						%a{href:"/papers/#{paper.id}"}
-							= paper.title
+					%li= list_item(:paper, paper)

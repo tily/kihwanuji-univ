@@ -1,4 +1,9 @@
 KihwanujiUniv::App.controllers :students do
+  get '/:id/timetable' do
+    @student = Student.find(params[:id])
+    render :'students/timetable'
+  end
+
   get '/:id' do
     @student = Student.find(params[:id])
     render :'students/show'

@@ -1,0 +1,11 @@
+- content_for(:navigation) do
+	%ol.breadcrumb
+		%li
+			%a{href:'/'}= t('top')
+		%li
+			%a{href:'/teachers'}= t('teacher')
+		%li
+			%a{href:"/teachers/#{@teacher.id}"}= @teacher.account.screen_name
+		%li= t('timetable')
+%h2= t('timetable')
+= timetable(@teacher.lectures)

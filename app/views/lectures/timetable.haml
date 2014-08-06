@@ -1,0 +1,10 @@
+- content_for(:navigation) do
+	%ol.breadcrumb
+		%li
+			%a{href:'/'}= t('top')
+		%li
+			%a{href:'/lectures'}= t('lecture')
+		%li
+			= t('timetable')
+%h2= t('timetable')
+= timetable(Lecture.all)

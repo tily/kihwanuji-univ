@@ -3,9 +3,25 @@ class Lecture
   include Mongoid::Timestamps
 
   DAY_IN_WEEK = %w(mon tue wed thu fri sat sun)
-  PERIOD = 1..12
+  PERIOD = 1..14
   CREDIT = 1..4
   SEMESTER = %w(first second)
+  PERIOD_TO_TIME = {
+    1 => '09:00-10:30',
+    2 => '10:40-12:10',
+    3 => '13:10-14:40',
+    4 => '14:50-16:20',
+    5 => '16:30-18:00',
+    6 => '18:10-19:40',
+    7 => '19:50-21:20',
+    8 => '21:30-23:00',
+    9 => '23:10-00:40',
+    10 => '00:50-02:20',
+    11 => '02:30-04:00',
+    12 => '04:10-05:40',
+    13 => '05:50-07:20',
+    14 => '07:30-09:00'
+  }
 
   field :title, type: String
   field :description, type: String

@@ -21,11 +21,11 @@
 			- @account.student.lectures.each do |lecture|
 				%li
 					%a{href:"/lectures/#{lecture.id}"}= lecture.title
+			%a{href:"/students/#{@account.student.id}/timetable"}= t('timetable')
 			%h3= t('paper')
 			%ul
 			- @account.student.papers.each do |paper|
-				%li
-					%a{href:"/papers/#{paper.id}"}= paper.title
+				%li= list_item(:paper, paper)
 	- if @account.teacher.enabled
 		%div.col-md-6
 			%h2= "#{t('teacher')} #{t('as')} #{@account.screen_name}"
@@ -38,8 +38,8 @@
 			- @account.teacher.lectures.each do |lecture|
 				%li
 					%a{href:"/lectures/#{lecture.id}"}= lecture.title
+			%a{href:"/teachers/#{@account.teacher.id}/timetable"}= t('timetable')
 			%h3= t('paper')
 			%ul
 			- @account.teacher.papers.each do |paper|
-				%li
-					%a{href:"/papers/#{paper.id}"}= paper.title
+				%li= list_item(:paper, paper)

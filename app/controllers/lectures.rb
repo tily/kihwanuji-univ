@@ -8,6 +8,10 @@ KihwanujiUniv::App.controllers :lectures do
     render :'lectures/edit'
   end
 
+  get '/timetable' do
+    render :'lectures/timetable'
+  end
+
   get '/:id' do
     @lecture = Lecture.find(params[:id])
     render :'lectures/show'
