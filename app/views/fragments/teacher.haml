@@ -1,0 +1,6 @@
+%a{href:"/teachers/#{teacher.id}"}= teacher.account.screen_name
+(
+- if teacher.course
+	= list_item(:course, teacher.course)
+= t("model.teacher.type.#{teacher.type}")
+)

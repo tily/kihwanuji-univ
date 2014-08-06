@@ -20,49 +20,29 @@
 			%h2= t('student')
 			%ul
 				- @students.each do |student|
-					%li
-						%a{href:"/students/#{student.id}"}= student.account.screen_name
-						- if student.course
-							(
-							= student.try(:course).try(:name)
-							= t("model.course.type.#{student.course.type}")
-							= t("model.student.type.#{student.type}")
-							)
+					%li= list_item(:student, student)
 		%div.col-md-6
 			%h2= t('teacher')
 			%ul
 				- @teachers.each do |teacher|
-					%li
-						%a{href:"/teachers/#{teacher.id}"}= teacher.account.screen_name
-						-if teacher.course
-							(
-							= teacher.try(:course).try(:name)
-							= t("model.course.type.#{teacher.course.type}")
-							= t("model.teacher.type.#{teacher.type}")
-							)
+					%li= list_item(:teacher, teacher)
 	%div.row
 		%div.col-md-6
 			%h2= t('model.course.type.bachelor')
 			%ul
 				- @bachelor_courses.each do |course|
-					%li
-						%a{href:"/courses/#{course.id}"}
-							= "#{course.name} #{t("model.course.type.#{course.type}")}"
+					%li= list_item(:course, course)
 		%div.col-md-6
 			%h2= t('model.course.type.graduate')
 			%ul
 				- @graduate_courses.each do |course|
-					%li
-						%a{href:"/courses/#{course.id}"}
-							= "#{course.name} #{t("model.course.type.#{course.type}")}"
+					%li= list_item(:course, course)
 	%div.row
 		%div.col-md-6
 			%h2= t('lecture')
 			%ul
 				- @lectures.each do |lecture|
-					%li
-						%a{href:"/lectures/#{lecture.id}"}
-							= lecture.title
+					%li= list_item(:lecture, lecture)
 			%a{href:'/lectures/timetable'}= t('timetable')
 		%div.col-md-6
 			%h2= t('paper')

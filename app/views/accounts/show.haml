@@ -19,8 +19,7 @@
 			%h3= t('participating_lectures')
 			%ul
 			- @account.student.lectures.each do |lecture|
-				%li
-					%a{href:"/lectures/#{lecture.id}"}= lecture.title
+				%li= list_item(:lecture, lecture)
 			%a{href:"/students/#{@account.student.id}/timetable"}= t('timetable')
 			%h3= t('paper')
 			%ul
@@ -36,8 +35,7 @@
 			%h3= t('teaching_lectures')
 			%ul
 			- @account.teacher.lectures.each do |lecture|
-				%li
-					%a{href:"/lectures/#{lecture.id}"}= lecture.title
+				%li= list_item(:lecture, lecture)
 			%a{href:"/teachers/#{@account.teacher.id}/timetable"}= t('timetable')
 			%h3= t('paper')
 			%ul

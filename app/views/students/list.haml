@@ -7,11 +7,4 @@
 %h2= t('student')
 %ul
 - @students.each do |student|
-	%li
-		%a{href:"/students/#{student.id}"}= student.account.screen_name
-		- if student.course
-			(
-			= student.course.name
-			= t("model.course.type.#{student.course.type}")
-			= t("model.student.type.#{student.type}")
-			)
+	%li= list_item(:student, student)

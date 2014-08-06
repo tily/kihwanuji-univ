@@ -7,11 +7,4 @@
 %h2= t('teacher')
 %ul
 - @teachers.each do |teacher|
-	%li
-		%a{href:"/teachers/#{teacher.id}"}= teacher.account.screen_name
-		- if teacher.course
-			(
-			= teacher.course.name
-			= t("model.course.type.#{teacher.course.type}")
-			= t("model.teacher.type.#{teacher.type}")
-			)
+	%li= list_item(:teacher, teacher)

@@ -13,5 +13,4 @@
 			%h3= t("model.course.type.#{type}")
 			%ul
 				- @courses.where(type: type).each do |course|
-					%li
-						%a{href:"/courses/#{course.id}"}= "#{course.name} #{t("model.course.type.#{type}")}"
+					%li= list_item(:course, course)

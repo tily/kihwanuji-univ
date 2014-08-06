@@ -8,17 +8,15 @@
 			= "#{@course.name}#{t("model.course.type.#{@course.type}")}"
 %h2= "#{@course.name}#{t("model.course.type.#{@course.type}")}"
 %a{href:"/courses/#{@course.id}/edit"}= t('edit')
-%p= @course.description
+!= markdown2html academic @course.description
 %div.row
 	%div.col-md-6
 		%h3 教官
 		%ul
 		- @course.teachers.enabled.each do |teacher|
-			%li
-				%a{href:"/teachers/#{teacher.id}"}= teacher.account.screen_name
+			%li= list_item(:teacher, teacher)
 	%div.col-md-6
 		%h3 学生
 		%ul
 		- @course.students.enabled.each do |student|
-			%li
-				%a{href:"/students/#{student.id}"}= student.account.screen_name
+			%li= list_item(:student, student)

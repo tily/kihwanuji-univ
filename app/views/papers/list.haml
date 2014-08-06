@@ -9,5 +9,4 @@
 	%a{href:'/papers/new'}= t('write')
 %ul
 - @papers.each do |paper|
-	%li
-		%a{href:"/papers/#{paper.id}"}= paper.title
+	%li= list_item(:paper, paper)

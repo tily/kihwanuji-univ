@@ -9,5 +9,4 @@
 	%a{href:'/lectures/new'}= t('create')
 %ul
 - @lectures.each do |lecture|
-	%li
-		%a{href:"/lectures/#{lecture.id}"}= lecture.title
+	%li= list_item(:lecture, lecture)
