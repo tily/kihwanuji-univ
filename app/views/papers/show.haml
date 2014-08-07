@@ -6,8 +6,8 @@
 			%a{href:"/papers"}= t('paper')
 		%li
 			= @paper.title
-%h2= @paper.title
-%p
+%h2.text-center= @paper.title
+%p.text-center
 	= t('university.name')
 	- if @paper.teacher
 		= "#{t("model.course.type.#{@paper.teacher.course.type}")}"
